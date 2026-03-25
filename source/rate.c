@@ -19,7 +19,6 @@ int main(int argc, char **argv){
     }else{
         Task *head = NULL;
         double total_exec_time;
-        char tipo_escalonamento = 'r';
 
         fscanf(f, "%lf", &total_exec_time);
         printf("%1.lf\n", total_exec_time);
@@ -29,6 +28,6 @@ int main(int argc, char **argv){
 
     fclose(f);
 
-    
+
     return 0;
 }
