@@ -5,7 +5,6 @@
 #include "task.h"
 
 int main(int argc, char **argv){
-    Task *head = NULL;
 
     if(argc != 2){
         printf("Quantidade de argumentos incorreta\n");
@@ -18,8 +17,9 @@ int main(int argc, char **argv){
         printf("ERRO - falha ao tentar abrir arquivo %s", argv[1]);
         exit(1);
     }else{
-
+        Task *head = NULL;
         double total_exec_time;
+        char tipo_escalonamento = 'r';
 
         fscanf(f, "%lf", &total_exec_time);
         printf("%1.lf\n", total_exec_time);
@@ -28,5 +28,7 @@ int main(int argc, char **argv){
     }
 
     fclose(f);
+
+    
     return 0;
 }

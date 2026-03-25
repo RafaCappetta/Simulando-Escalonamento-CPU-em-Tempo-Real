@@ -23,6 +23,8 @@ Task* criar_task(FILE *arquivo, int *verifica_fim_arquivo);
 
 void inserir_inicio_lista_task(Task **head, FILE *arquivo);
 
+void escalonamento_rate(Task *h, double total_exec_time);
 
+void escalonamento_edf(Task *h, double total_exec_time);
 
 #endif

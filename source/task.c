@@ -74,3 +74,7 @@ void inserir_inicio_lista_task(Task **head, FILE *arquivo){
         *head = novo;
     }
 }
+
+void escalonamento_rate(Task *h, double total_exec_time){}
+
+void escalonamento_edf(Task *h, double total_exec_time){}
