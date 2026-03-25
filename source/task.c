@@ -75,6 +75,110 @@ void inserir_inicio_lista_task(Task **head, FILE *arquivo){
     }
 }
 
-void escalonamento_rate(Task *h, double total_exec_time){}
+void escalonamento_rate(Task *h, double total_exec_time){
+    FILE *saida = fopen("rate_rcb2.out", "w+");
+    
+    if(saida == NULL){
+        printf("ERRO - falha ao tentar abrir arquivo de saida dos dados.\n");
+        exit(1);
+        
+    }else{
+        fprintf(saida, "EXECUTION BY RATE");
+        fprintf(saida, "\n\n");
 
-void escalonamento_edf(Task *h, double total_exec_time){}
+        double inicio_execucao;
+    }
+
+    Task *para_imprimir = h;
+
+    fprintf(saida, "\n");
+    fprintf(saida, "LOST DEADLINES\n");
+
+    while (para_imprimir != NULL){
+        fprintf(saida, "[%s] %d\n", para_imprimir->task_name, para_imprimir->lost_dl);
+        para_imprimir = para_imprimir->prox;
+    }
+    
+    fprintf(saida, "\n");
+
+    fprintf(saida,"COMPLETE EXECUTION\n");
+    
+    para_imprimir = h;
+    
+    while (para_imprimir != NULL){
+        fprintf(saida, "[%s] %d\n", para_imprimir->task_name, para_imprimir->completed_exec);
+        para_imprimir = para_imprimir->prox;
+    }
+    
+    fprintf(saida, "\n");
+    
+    fprintf(saida, "KILLED\n");
+
+    para_imprimir = h;
+
+    while (para_imprimir != NULL){
+        if(para_imprimir->prox == NULL){
+            fprintf(saida, "[%s] %d", para_imprimir->task_name, para_imprimir->killed);
+        }else{
+            fprintf(saida, "[%s] %d\n", para_imprimir->task_name, para_imprimir->killed);
+        }
+
+        para_imprimir = para_imprimir->prox;
+    }
+    
+    fclose(saida);
+}
+
+void escalonamento_edf(Task *h, double total_exec_time){
+    FILE *saida = fopen("rate_rcb2.out", "w+");
+    
+    if(saida == NULL){
+        printf("ERRO - falha ao tentar abrir arquivo de saida dos dados.\n");
+        exit(1);
+        
+    }else{
+        fprintf(saida, "EXECUTION BY EDF");
+        fprintf(saida, "\n\n");
+
+        double inicio_execucao;
+    }
+
+    Task *para_imprimir = h;
+
+    fprintf(saida, "\n");
+    fprintf(saida, "LOST DEADLINES\n");
+
+    while (para_imprimir != NULL){
+        fprintf(saida, "[%s] %d\n", para_imprimir->task_name, para_imprimir->lost_dl);
+        para_imprimir = para_imprimir->prox;
+    }
+    
+    fprintf(saida, "\n");
+
+    fprintf(saida,"COMPLETE EXECUTION\n");
+    
+    para_imprimir = h;
+    
+    while (para_imprimir != NULL){
+        fprintf(saida, "[%s] %d\n", para_imprimir->task_name, para_imprimir->completed_exec);
+        para_imprimir = para_imprimir->prox;
+    }
+    
+    fprintf(saida, "\n");
+    
+    fprintf(saida, "KILLED\n");
+
+    para_imprimir = h;
+
+    while (para_imprimir != NULL){
+        if(para_imprimir->prox == NULL){
+            fprintf(saida, "[%s] %d", para_imprimir->task_name, para_imprimir->killed);
+        }else{
+            fprintf(saida, "[%s] %d\n", para_imprimir->task_name, para_imprimir->killed);
+        }
+
+        para_imprimir = para_imprimir->prox;
+    }
+    
+    fclose(saida);
+}

@@ -12,22 +12,21 @@ int main(int argc, char **argv){
     }
 
     FILE *f = fopen(argv[1], "r");
+    Task *head = NULL;
+    double total_exec_time;
 
     if(f == NULL){
-        printf("ERRO - falha ao tentar abrir arquivo %s", argv[1]);
+        printf("ERRO - falha ao tentar abrir arquivo %s\n", argv[1]);
         exit(1);
     }else{
-        Task *head = NULL;
-        double total_exec_time;
-
         fscanf(f, "%lf", &total_exec_time);
         printf("%1.lf\n", total_exec_time);
 
         inserir_inicio_lista_task(&head, f);
+        escalonamento_rate(head, total_exec_time);
     }
 
     fclose(f);
-
 
     return 0;
 }
